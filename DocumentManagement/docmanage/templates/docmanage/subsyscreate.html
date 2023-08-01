@@ -1,0 +1,30 @@
+{% extends 'docmanage/main.html' %} {% load static %} {% block content %}
+<section class="section main-section">
+  <div class="card mb-6">
+    <div class="card-content">
+      <form method="get">
+        <div class="field">
+          <label class="label">Tên phân hệ</label>
+          <div class="field-body">
+            <div class="field">
+              <div class="control icons-left">
+                <input class="input" type="text" placeholder="Nhập tên phân hệ..." name="subsys_name" />
+                <span class="icon left"><i class="mdi mdi-account"></i></span>
+              </div>
+            </div>            
+          </div>
+        </div>
+        <div class="field grouped">
+          <div class="control">
+            <button type="submit" class="button green">Thêm</button>
+          </div>
+          <div class="control">
+            <button type="reset" class="button red">Xóa trắng</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

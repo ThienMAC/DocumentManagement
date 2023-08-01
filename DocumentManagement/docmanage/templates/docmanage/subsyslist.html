@@ -1,0 +1,84 @@
+{% extends 'docmanage/main.html' %} {% load static %} {% block content %}
+<section class="is-hero-bar">
+  <div
+    class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0"
+  >
+    <a class="button blue" href="{% url 'subsys_create' %}">
+      <i class="mdi mdi-square-edit-outline"></i> Thêm mới
+    </a>
+  </div>
+</section>
+<section class="section main-section">
+  <div class="notification blue">
+    <div
+      class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0"
+    >
+      <div>
+        <span class="icon"><i class="mdi mdi-buffer"></i></span>
+        <b>Danh sách phân hệ</b>
+      </div>
+    </div>
+  </div>
+  <div class="card has-table">
+    <div class="card-content">
+      <table>
+        <thead>
+          <tr>
+            <th>Mã phân hệ</th>
+            <th>Tên phân hệ</th>
+            <th>Ngày tạo</th>
+            <th>Ngày chỉnh sửa</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>          
+            {% for sub in sublist %}
+            <tr>
+              <td data-label="id">{{sub.id}}</td>
+              <td data-label="subsys_name">{{sub.subsys_name}}</td>
+              <td data-label="Created">
+                <small class="text-gray-500" title="created_date"
+                  >{{sub.created_date|date:"d-m-Y H:i:s"}}</small
+                >
+              </td>
+              <td data-label="Created">
+                <small class="text-gray-500" title="modified_date"
+                  >{{sub.modified_date|date:"d-m-Y H:i:s"}}</small
+                >
+              </td>
+              <td class="actions-cell">
+                <div class="buttons right nowrap">
+                  <button
+                    class="button small green --jb-modal"
+                    data-target="sample-modal-2"
+                    type="button"
+                  >
+                  <a href="{% url 'subsystem_detail' sub.id %}"><span class="icon"><i class="mdi mdi-eye"></i></span></a>
+                  </button>
+                  <button
+                    class="button small red --jb-modal"
+                    data-target="sample-modal"
+                    type="button"
+                  >
+                    <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+                  </button>
+                </div>
+              </td>    
+            </tr>        
+            {% endfor %}          
+        </tbody>
+      </table>
+      <div class="table-pagination">
+        <div class="flex items-center justify-between">
+          <div class="buttons">
+            <button type="button" class="button active">1</button>
+            <button type="button" class="button">2</button>
+            <button type="button" class="button">3</button>
+          </div>
+          <small>Page 1 of 3</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

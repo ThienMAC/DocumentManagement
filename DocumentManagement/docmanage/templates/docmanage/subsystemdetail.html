@@ -1,0 +1,32 @@
+{% extends 'docmanage/main.html' %} {% load static %} {% block content %}
+
+<section class="section main-section">
+  <div class="card mb-6">
+    <div class="card-content">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="field">
+          <label class="label">Tên phân hệ</label>
+          <div class="field-body">
+            <div class="field">
+              <div class="control icons-left">
+                <input class="input" type="text" name="subsys_name" value="{{subsys.subsys_name}}"/>{% comment "get data to control html" %}Get data in context def in view.py{% endcomment %}
+                <span class="icon left"><i class="mdi mdi-account"></i></span>
+              </div>
+            </div>            
+          </div>
+        </div>
+        <div class="field grouped">
+          <div class="control">
+            <input type="submit" class="button green" value="Update">
+          </div>
+          <div class="control">
+            <button type="reset" class="button red">Xóa</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
